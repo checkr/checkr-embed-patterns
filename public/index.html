@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Fullstack Checkr Embed Example</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@checkr/web-sdk"></script>
+  </head>
+  <body>
+    <div class="banner">
+      Set your OAuth Access Token in routes/index.js to get started. View docs
+      <a href="https://docs.checkr.com/embeds" target="_blank">here<a/>.
+    </div>
+    <h1>New Invitation</h1>
+    <div class="container">
+      <div id="new-invitation"></div>
+    </div>
+    <h1>Reports Overview</h1>
+    <div class="container">
+      <div id="reports-overview"></div>
+    </div>
+    <script type="module">
+      // Read more at https://docs.checkr.com/embeds/#section/NewInvitation-Embed
+      const newInvitationEmbed = new Checkr.Embeds.NewInvitation({
+        sessionTokenPath: "/session-tokens",
+        externalCandidateId: "KOMRON-ID-0001",
+        enableLogging: true
+      });
+
+      // Try it out! Insert an externalCandidateId or candidateId
+      // Read more at https://docs.checkr.com/embeds/#section/ReportsOverview-Embed
+      const reportsOverviewEmbed = new Checkr.Embeds.ReportsOverview({
+        externalCandidateId: "KOMRON-ID-0001",
+        sessionTokenPath: "/session-tokens",
+        enableLogging: true
+      });
+
+      newInvitationEmbed.render("#new-invitation");
+      reportsOverviewEmbed.render("#reports-overview");
+    </script>
+  </body>
+</html>

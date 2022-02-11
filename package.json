@@ -5,7 +5,8 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js localhost 3000"
+    "start": "nodemon app.js localhost 3000",
+    "build": "echo 'skip'"
   },
   "dependencies": {
     "axios": "0.23.0",

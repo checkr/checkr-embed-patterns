@@ -10,3 +10,10 @@ This project has 2 main files:
 
 - `public/index.html` shows the Embeds being used.
 - `routes/index.js` shows how authentication acquisition works.
+
+## Developing locally
+
+* Run `git clone https://github.com/checkr/checkr-embeds-codesandbox-example` to download the project.
+* Run `yarn install` to install dependencies.
+* Run `yarn start` to start the app at http://localhost:3000.
+* Add your API Key or OAccess Token to `routes/index.js`.

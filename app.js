@@ -1,20 +1,23 @@
-var express = require('express');
-var app = express();
+import express from 'express';
+import path from 'path';
+import {fakeData, pageHelp} from './utils.js'
 
-// set the view engine to ejs
+const port = process.env.PORT || 5000;
+const app = express();
+const __dirname = path.resolve();
+
 app.set('view engine', 'ejs');
+app.set('views', './views');
+app.use(express.static('public'))
 
-// use res.render to load up an ejs view file
-
-// index page
 app.get('/', function(req, res) {
-  res.render('pages/index');
+  res.render('index', pageHelp('index'));
 });
 
-// about page
-app.get('/about', function(req, res) {
-  res.render('pages/about');
+app.get('/patterns/:slug', function(req, res) {
+  res.render(`${req.params.slug}`, {...fakeData(), ...pageHelp(req.params.slug)});
 });
 
-app.listen(8080);
-console.log('Server is listening on port 8080');
+app.listen(port);
+console.log(`Started at http://localhost:${port}`);
+

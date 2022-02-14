@@ -1,0 +1,35 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow py-2">
+  <a class="navbar-brand col-md-3 col-lg-2 d-flex align-items-center" href="/">
+    <img src="/logo.png" class="logo"/>
+    <span class="px-1">Acme HR</span>
+  </a>
+
+  <div class="d-flex">
+    <% if (pageHelp) { %>
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#pattern-detail">&#63;</button>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="pattern-detail">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Offcanvas</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body text-dark">
+          <p><%= pageHelp %></p>
+        </div>
+      </div>
+    <% } %>
+
+    <div class="dropdown ms-3">
+      <button class="btn dropdown-toggle" data-bs-toggle="dropdown">
+        <span class="d-none d-lg-inline">Patterns</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="/patterns/candidate-profile-actions">Candidate Profile</a></li>
+        <li><a class="dropdown-item" href="/patterns/candidate-pipeline">Candidate Pipeline</a></li>
+        <li><a class="dropdown-item current" href="/patterns/full-page">Full page</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="https://docs.checkr.com/embeds" target="_blank">Documentation</a></li>
+        <li><a class="dropdown-item" href="https://github.com/checkr/checkr-embed-patterns" target="_blank">Source</a></li>
+      </ul>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head'); %>
+</head>
+<body>
+<%- include('./partials/navbar'); %>
+
+<div class="container-fluid">
+  <div class="my-5">
+    <div class="d-flex justify-content-between">
+      <div>
+        <h2>Charlotte Danielle Abbott</h2>
+        <div>Sr. HR Administrator</div>
+      </div>
+      <div>
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            Actions
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-item" type="button">Email Candidate</button>
+            <button class="dropdown-item" type="button">Edit Application</button>
+            <button class="dropdown-item" type="button">Archive Profile</button>
+            <button id="invite-candidate-btn" class="dropdown-item" type="button">Run Background Check</button>
+            <button id="view-background-check-results-btn" class="dropdown-item" type="button">View Background Results
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row gy-3">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body p-5">
+          <h4 class="mb-4">Personal</h4>
+          <form>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group mb-4">
+                  <label for="name">Name</label>
+                  <input class="form-control" id="name" type="text" value="Charlotte Danielle Abbott"/>
+                </div>
+                <div class="form-group mb-4">
+                  <label for="dob">Birth Date</label>
+                  <input class="form-control" id="dob" type="date"/>
+                </div>
+                <div class="form-group mb-4">
+                  <label for="gender">Gender</label>
+                  <input class="form-control" id="gender" type="text"/>
+                </div>
+                <div class="form-group mb-4">
+                  <label for="address">Address</label>
+                  <textarea class="form-control" id="address" rows="2"></textarea>
+                </div>
+                <input type="submit" class="btn"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body p-5">
+          <h4 class="mb-4">Contact Information</h4>
+          <form>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group mb-4">
+                  <label for="personal-email">Personal Email</label>
+                  <input class="form-control" id="personal-email" type="email" value="charlotte@gmail.com"/>
+                </div>
+                <div class="form-group mb-4">
+                  <label for="work-email">Work Email</label>
+                  <input class="form-control" id="work-email" type="email" value="charlotte@acme.com"/>
+                </div>
+                <div class="form-group mb-4">
+                  <label for="phone-number">Phone</label>
+                  <input class="form-control" id="phone-number" type="tel" value="415-193-2000"/>
+                </div>
+                <div class="form-group mb-4">
+                  <label for="linked-in">LinkedIn</label>
+                  <input class="form-control" id="linked-in" type="text"/>
+                </div>
+                <div class="form-group mb-4">
+                  <label for="twitter">Twitter</label>
+                  <input class="form-control" id="twitter" type="text"/>
+                </div>
+                <input type="submit" class="btn"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  const styles = {
+    '.btn-primary': {
+      background: '#527a00',
+    },
+    '.header': {
+      'font-size': '150%',
+      'font-weight': 'normal',
+      color: '#527a00',
+    },
+    '.form-label': {
+      'font-weight': 'bold',
+    },
+    '.form-control': {
+      padding: '0.5rem',
+    },
+    '.link': {
+      'text-decoration': 'none'
+    },
+  };
+
+  const props = {
+    externalCandidateId: 'WEB-SDK-DEMO-001',
+    sessionTokenPath: '/session-token-path',
+    defaultEmail: 'charlotte@gmail.com',
+    fakeMode: true,
+    styles
+  }
+
+  const inviteCandidateBtn = document.getElementById('invite-candidate-btn')
+  inviteCandidateBtn.addEventListener('click', event => {
+    const newInvitationEmbed = new Checkr.Embeds.NewInvitation(props)
+    newInvitationEmbed.modal()
+    embed.modal()
+  })
+
+  const viewBackgroundCheckResultsBtn = document.getElementById('view-background-check-results-btn')
+
+  viewBackgroundCheckResultsBtn.addEventListener('click', event => {
+    const reportsOverviewEmbed = new Checkr.Embeds.ReportsOverview(props)
+    reportsOverviewEmbed.modal()
+  })
+</script>
+</body>
+</html>

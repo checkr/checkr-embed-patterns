@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head'); %>
+</head>
+<body>
+<%- include('./partials/navbar'); %>
+
+<div class="container-fluid">
+  <div class="my-5">
+    <h2>Candidate Pipeline</h2>
+    <h5>Position: Software Engineer</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-12 mb-5">
+      <div class="d-flex justify-content-center">
+        <div id="funnel"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="accordion accordion-flush" id="accordion-candidates">
+        <% candidates.forEach(candidate => { %>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#candidate-detail-<%= candidate.id %>">
+                <span class="w-25"><%= candidate.name %></span>
+                <span class="w-25"><span class="badge bg-secondary"><%= candidate.step %></span></span>
+                <span class="w-25 small text-muted text-truncate"><%= candidate.notes %></span>
+                <span class="text-muted small w-25 text-end"><span class="me-3"><%= candidate.lastUpdated.toLocaleDateString('en-US') %></span></span>
+              </button>
+            </div>
+            <div id="candidate-detail-<%= candidate.id %>" class="accordion-collapse collapse" data-bs-parent="#accordion-candidates">
+              <div class="accordion-body">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#candidate-tab-content-<%= candidate.id %>-info" type="button">Basic Information</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#candidate-tab-content-<%= candidate.id %>-activity" type="button">Activity</button>
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active p-3" id="candidate-tab-content-<%= candidate.id %>-info">
+                    <dl>
+                      <dt>Email</dt>
+                      <dd><%= candidate.email %></dd>
+                      <dt>Phone</dd>
+                      <dd><%= candidate.phone %></dt>
+                      <dt>Current Position</dt>
+                      <dd><%= candidate.currentPosition %></dd>
+                      <dt>Address</dt>
+                      <dd><%= candidate.address %></dd>
+                      <dt>Notes</dt>
+                      <dd><%= candidate.notes %></dd>
+                    </dl>
+                  </div>
+                  <div class="tab-pane p-3" id="candidate-tab-content-<%= candidate.id %>-activity">
+                    <div class="card mb-4">
+                      <div class="card-header">
+                        Screening - <%= candidate.lastUpdated.toLocaleDateString('en-US') %>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-text"><%= candidate.notes %></p>
+                      </div>
+                    </div>
+                    <div class="card mb-4">
+                      <div class="card-header">
+                        Interview - <%= candidate.lastUpdated.toLocaleDateString('en-US') %>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-text"><%= candidate.notes %></p>
+                      </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header">Background checks</div>
+                      <div class="card-body">
+                        <button type="button" data-checkr-candidate-email="<%= candidate.email %>" data-checkr-embed="new-invitation" class="btn btn-sm">New Background Check</button>
+                        <div class="card-text mt-3">
+                          <div data-checkr-candidate-email="<%= candidate.email %>" data-checkr-embed="reports-overview"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script type="module">
+    const styles = {
+      '.btn-primary': {
+        background: '#527a00',
+      },
+      '.header': {
+        'font-size': '150%',
+        'font-weight': 'normal',
+        color: '#527a00',
+      },
+      '.form-label': {
+        'font-weight': 'bold',
+      },
+      '.form-control': {
+        padding: '0.5rem',
+      },
+      '.link': {
+        'text-decoration': 'none'
+      },
+    };
+
+    const props = {
+      externalCandidateId: 'WEB-SDK-DEMO-001',
+      sessionTokenPath: '/session-token-path',
+      fakeMode: true,
+      styles
+    }
+
+    document.querySelectorAll("[data-checkr-embed='new-invitation']").forEach(button => {
+      button.addEventListener('click', event => {
+        const newInvitationEmbed = new Checkr.Embeds.NewInvitation({...props, ...{defaultEmail: button.dataset.checkrCandidateEmail}});
+        newInvitationEmbed.modal();
+        embed.modal();
+      });
+    });
+    
+    document.querySelectorAll("[data-checkr-embed='reports-overview']").forEach(section => {
+      const reportsOverviewEmbed = new Checkr.Embeds.ReportsOverview({...props, ...{defaultEmail: section.dataset.checkrCandidateEmail}});
+      reportsOverviewEmbed.render(section);
+    });
+  </script>
+
+  <script>
+    const chart = new D3Funnel('#funnel');
+    chart.draw(<%- JSON.stringify(funnelData) %>, {});
+  </script>
+
+</body>
+</html>

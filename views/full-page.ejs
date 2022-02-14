@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head'); %>
+</head>
+<body>
+<%- include('./partials/navbar'); %>
+
+<div class="container-fluid">
+  <div class="my-5">
+    <div class="d-flex justify-content-between">
+      <h2>Background Check</h4>
+      <div class="px-3">
+        <h4>Charlotte Danielle Abbott</h2>
+        <div>Sr. HR Administrator</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row gy-3">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body p-4">
+          <div id="new-invitation--default"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body p-4">
+          <div id="reports-overview--default"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  const styles = {
+    ".btn-primary": {
+      background: "#527a00",
+    },
+    ".header": {
+      "font-size": "150%",
+      "font-weight": "normal",
+      color: "#527a00",
+    },
+    ".form-label": {
+      "font-weight": "bold",
+    },
+    ".form-control": {
+      padding: "0.5rem",
+    },
+    ".link": {
+      "text-decoration": "none",
+    },
+  };
+
+  const props = {
+    externalCandidateId: "WEB-SDK-DEMO-001",
+    sessionTokenPath: "/session-token-path",
+    fakeMode: true,
+    styles,
+  };
+
+  const newInvitationEmbed = new Checkr.Embeds.NewInvitation(props);
+  newInvitationEmbed.render("#new-invitation--default");
+
+  const reportsOverviewEmbed = new Checkr.Embeds.ReportsOverview(props);
+  reportsOverviewEmbed.render("#reports-overview--default");
+</script>
+</body>
+</html>

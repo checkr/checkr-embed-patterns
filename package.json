@@ -12,7 +12,13 @@
     "checkr"
   ],
   "author": "Checkr",
-  "license": "",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
   "dependencies": {
     "@faker-js/faker": "^6.0.0-alpha.6",
     "ejs": "^3.1.6",

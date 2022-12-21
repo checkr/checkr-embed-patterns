@@ -5,13 +5,13 @@ printf "description: Chart for deployment\n" >> .gitops/helm/checkr-embed-patter
 printf "name: checkr-embed-patterns\n" >> .gitops/helm/checkr-embed-patterns/Chart.yaml
 printf "version: 0.1.0\n" >> .gitops/helm/checkr-embed-patterns/Chart.yaml
 printf "dependencies:\n" >> .gitops/helm/checkr-embed-patterns/Chart.yaml
-printf "  - name: $CHART_NAME\n" >> .gitops/helm/checkr-embed-patterns/Chart.yaml
-printf "    version: $CHART_VERSION\n" >> .gitops/helm/checkr-embed-patterns/Chart.yaml
-printf "    repository: $CHART_REPOSITORY\n" >> .gitops/helm/checkr-embed-patterns/Chart.yaml
-printf "    alias: $CHART_ALIAS\n" >> .gitops/helm/checkr-embed-patterns/Chart.yaml
+printf "- name: $CHART_NAME\n" >> .gitops/helm/checkr-embed-patterns/Chart.yaml
+printf "  version: $CHART_VERSION\n" >> .gitops/helm/checkr-embed-patterns/Chart.yaml
+printf "  repository: $CHART_REPOSITORY\n" >> .gitops/helm/checkr-embed-patterns/Chart.yaml
+printf "  alias: $CHART_ALIAS\n" >> .gitops/helm/checkr-embed-patterns/Chart.yaml
 
 printf "microservice:\n" > .gitops/helm/checkr-embed-patterns/production.yaml
-printf "  environment:production\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
+printf "  environment: production\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "  nameOverride: checkr-embed-patterns\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "  deployments:\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "    web:\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
@@ -30,3 +30,6 @@ printf "      ports:\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "        - port: 80\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "        - targetPort: 5000\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "      selector:web\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
+
+echo "production"
+cat .gitops/helm/checkr-embed-patterns/production.yaml

@@ -13,3 +13,4 @@ build_image:
 
 deploy_production:
   extends: .deploy_production
+  when: on_success

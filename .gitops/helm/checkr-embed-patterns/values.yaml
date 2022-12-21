@@ -1,0 +1,2 @@
+microservice:
+  nameOverride: checkr-embed-patterns

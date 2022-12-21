@@ -13,6 +13,7 @@ build_image:
 
 deploy_production:
   before_script:
+    - export
     - sh bin/generate_chart.sh
   extends: .deploy_production
   when: on_success

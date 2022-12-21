@@ -20,7 +20,7 @@ printf "      replicaCount: $REPLICA_COUNT\n\n" >> .gitops/helm/checkr-embed-pat
 printf "  ingresses:\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "    web:\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "      type: $INGRESS_TYPE\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
-printf "      hosts: $INGRESS_TYPE\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
+printf "      hosts:\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "        - host: $INGRESS_HOSTS\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "          serviceName: web\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "          servicePort: 80\n\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
@@ -29,7 +29,7 @@ printf "    web:\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "      ports:\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "        - port: 80\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "        - targetPort: 5000\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
-printf "      selector:web\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
+printf "      selector: web\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 
 echo "production"
 cat .gitops/helm/checkr-embed-patterns/production.yaml

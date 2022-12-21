@@ -28,7 +28,7 @@ printf "  services:\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "    web:\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "      ports:\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "        - port: 80\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
-printf "        - targetPort: 5000\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
+printf "          targetPort: 5000\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 printf "      selector: web\n" >> .gitops/helm/checkr-embed-patterns/production.yaml
 
 echo "production"

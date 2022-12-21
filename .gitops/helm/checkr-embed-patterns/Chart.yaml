@@ -1,0 +1,9 @@
+apiVersion: $CI_CHART_API_VERSION
+description: Chart for deployment
+name: checkr-embed-patterns
+version: $CI_REPO_VERSION
+dependencies:
+  - name: $CI_CHART_NAME
+    version: $CI_CHART_VERSION
+    repository: $CI_CHART_REPOSITORY
+    alias: $CI_CHART_ALIAS

@@ -2,7 +2,7 @@
 
 A minimal application which showcases how typical product user experiences can incorporate [Checkr Embeds](https://docs.checkr.com/embeds).
 
-[checkr-embed-patterns.checkr.com](https://checkr-embed-patterns.checkr.com/)
+[checkr-embed-patterns.checkr-sandbox.com](https://checkr-embed-patterns.checkr-sandbox.com/)
 
 ### Developing
 

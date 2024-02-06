@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head'); %>
+</head>
+<body>
+<%- include('./partials/navbar'); %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 p-lg-5 mx-auto my-5">
+      <div class="border-gray border-bottom p-lg-2 mb-4">
+        <h2>Enhanced Features & Integrations</h2>
+      </div>
+      <div class="list-group">
+        <div class="list-group-item p-lg-4">
+          <div class="row">
+            <div class="col-md-2">
+              <svg width="90" height="22" viewBox="0 0 90 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40.1212 5.04346C35.613 5.04346 32.2576 8.48124 32.2576 13.0512C32.2576 17.6006 35.6542 21.059 40.1212 21.059C43.2503 21.059 45.8852 19.3916 47.2027 16.7155L43.312 15.6862C42.6739 16.736 41.5211 17.3948 40.1212 17.3948C38.1244 17.3948 36.7658 16.2626 36.4158 14.1834H47.9026C47.9438 13.7923 47.9849 13.3806 47.9849 12.9895C47.9849 8.64593 44.7942 5.04346 40.1212 5.04346ZM36.5188 11.4044C36.9922 9.61345 38.2891 8.543 40.1212 8.543C41.9534 8.543 43.2914 9.55169 43.8678 11.4044H36.5188Z" fill="#009BB5"></path><path d="M16.7155 20.6473H20.812V12.6807C20.812 10.2104 22.1707 8.72827 24.2087 8.72827C26.0614 8.72827 26.8642 9.86048 26.8642 12.1249V20.6473H30.9607V11.425C30.9607 7.5549 28.8198 5.10522 25.382 5.10522C23.5705 5.10522 21.9442 5.78454 20.7915 6.87557V0H16.7155" fill="#009BB5"></path><path d="M79.1102 5.47576H74.3755L69.8261 12.2072V0H65.7296V20.6473H69.8261V13.3806L74.6843 20.6473H79.6454L73.9638 12.7013L79.1102 5.47576Z" fill="#009BB5"></path><path d="M88.6414 5.39343C86.6857 5.39343 85.3271 5.99041 84.2361 7.32847L83.5156 5.47578H80.8806V20.6473H84.9977V12.7631C84.9977 10.2928 85.9035 9.26352 88.2297 9.26352H90V5.39343H88.6414Z" fill="#009BB5"></path><path d="M8.06953 17.2301C5.86688 17.2301 4.17887 15.398 4.17887 13.0512C4.17887 10.7045 5.8463 8.91354 8.06953 8.91354C9.61345 8.91354 10.9927 9.71638 11.672 11.178L15.4186 9.88106C14.2452 6.91674 11.4867 5.04346 8.11071 5.04346C3.47896 5.04346 0 8.46066 0 13.0101C0 17.5595 3.49954 21.0796 8.04895 21.0796C11.4867 21.0796 14.3275 19.124 15.4597 16.0567L11.6514 14.7393C11.075 16.2832 9.65462 17.2301 8.06953 17.2301Z" fill="#009BB5"></path><path d="M57.0632 17.2301C54.8605 17.2301 53.1725 15.398 53.1725 13.0512C53.1725 10.7045 54.8399 8.91354 57.0632 8.91354C58.6071 8.91354 59.9863 9.71638 60.6656 11.178L64.4122 9.88106C63.2388 6.91674 60.4804 5.04346 57.1043 5.04346C52.4932 5.04346 49.0142 8.46066 49.0142 13.0101C49.0142 17.5595 52.5138 21.0796 57.0632 21.0796C60.501 21.0796 63.3418 19.124 64.474 16.0567L60.6656 14.7393C60.0892 16.2832 58.6483 17.2301 57.0632 17.2301Z" fill="#009BB5"></path></svg>
+            </div>
+            <div class="col-md-8">
+              Checkr provides modern and compliant background checks for global enterprises and startups.
+            </div>
+            <div class="col-md-2">
+              <button type="button" id="launch-signup-flow" class="btn btn-primary">Install</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  const styles = {
+    '.btn-primary': {
+      background: '#527a00',
+    },
+    '.header': {
+      'font-size': '150%',
+      'font-weight': 'normal',
+      color: '#527a00',
+    },
+    '.form-label': {
+      'font-weight': 'bold',
+    },
+    '.form-control': {
+      padding: '0.5rem',
+    },
+    '.link': {
+      'text-decoration': 'none'
+    },
+  };
+
+  const props = {
+    externalCandidateId: 'WEB-SDK-DEMO-001',
+    sessionTokenPath: '/session-token-path',
+    oauthTokenPath: '/oauth-token-path',
+    partner: {
+      id: "d7c27fa9ad87c7d7c0904250",
+      name: "ACME Partners",
+    },
+    fakeMode: true,
+    styles
+  }
+
+  const btn = document.getElementById('launch-signup-flow')
+  btn.addEventListener('click', event => {
+    let embed = new Checkr.Embeds.SignUpFlow(props)
+    embed.modal()
+  });
+
+</script>
+
+</body>
+</html>

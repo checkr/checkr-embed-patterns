@@ -79,7 +79,7 @@
                     <div class="card">
                       <div class="card-header">Background checks</div>
                       <div class="card-body">
-                        <button type="button" data-checkr-candidate-email="<%= candidate.email %>" data-checkr-embed="new-invitation" class="btn btn-sm">New Background Check</button>
+                        <button type="button" data-checkr-candidate-email="<%= candidate.email %>" data-checkr-candidate-phone="<%= candidate.phone %>" data-checkr-embed="new-invitation" class="btn btn-sm">New Background Check</button>
                         <div class="card-text mt-3">
                           <div data-checkr-candidate-email="<%= candidate.email %>" data-checkr-embed="reports-overview"></div>
                         </div>
@@ -126,14 +126,14 @@
 
     document.querySelectorAll("[data-checkr-embed='new-invitation']").forEach(button => {
       button.addEventListener('click', event => {
-        const newInvitationEmbed = new Checkr.Embeds.NewInvitation({...props, ...{defaultEmail: button.dataset.checkrCandidateEmail}});
+        const newInvitationEmbed = new Checkr.Embeds.NewInvitation({...props, defaultEmail: button.dataset.checkrCandidateEmail, defaultPhone: button.dataset.checkrCandidatePhone});
         newInvitationEmbed.modal();
         embed.modal();
       });
     });
-    
+
     document.querySelectorAll("[data-checkr-embed='reports-overview']").forEach(section => {
-      const reportsOverviewEmbed = new Checkr.Embeds.ReportsOverview({...props, ...{defaultEmail: section.dataset.checkrCandidateEmail}});
+      const reportsOverviewEmbed = new Checkr.Embeds.ReportsOverview({...props, defaultEmail: section.dataset.checkrCandidateEmail});
       reportsOverviewEmbed.render(section);
     });
   </script>

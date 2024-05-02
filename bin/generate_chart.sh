@@ -12,6 +12,17 @@ printf "  alias: $CHART_ALIAS\n" >> .gitops/helm/checkr-embed-patterns/Chart.yam
 
 printf "microservice:\n" > .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
 printf "  environment: sandbox\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
+printf "  deploymentDefaults:\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
+printf "    containerSecurityContext:\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
+printf "      allowPrivilegeEscalation: false\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
+printf "      capabilities:\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
+printf "        drop:\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
+printf "          - ALL\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
+printf "    securityContext:\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
+printf "      runAsUser: 1001\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
+printf "      runAsGroup: 1001\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
+printf "      fsGroup: 1001\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
+printf "      runAsNonRoot: true\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
 printf "  nameOverride: checkr-embed-patterns\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
 printf "  deployments:\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
 printf "    web:\n" >> .gitops/helm/checkr-embed-patterns/sandbox_us.yaml
